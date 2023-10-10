@@ -5,6 +5,6 @@
 - 📫 How to reach me sva_12000@yahoo.ca ...
 
 <!---
-sva12000/sva12000 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+SVera is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
 --->
