@@ -30,6 +30,7 @@ You can click the Preview link to take a look at your changes.
 		
 --->		<p align="center">
 		Launch the utility: <br/>
+  		<[img src="https://github.com/sva12000/SVera/files/12932650/MCloudTraining.docx" alt="Project:Deploy the Solution Architecture./>
   		<[MCloudTraining.docx](https://github.com/sva12000/SVera/files/12932650/MCloudTraining.docx)/>
 		<br />
 		<br />
