@@ -30,12 +30,12 @@ You can click the Preview link to take a look at your changes.
 		
 --->		<p align="center">
 		Launch the utility: <br/>
-  		<[img src="https://github.com/sva12000/SVera/files/12932650/MCloudTraining.docx" alt="Project:Deploy the Solution Architecture./>
-  		<[MCloudTraining.docx](https://github.com/sva12000/SVera/files/12932650/MCloudTraining.docx)/>
+  		<src="https://github.com/sva12000/SVera/files/12932650/MCloudTraining.docx" alt="Project:Deploy the Solution Architecture"/>
+  		
 		<br />
 		<br />
     		Launch the utility: <br/>
-		<img src="https://i.imgur.com/62TgaWL.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+		<src="https://i.imgur.com/62TgaWL.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 		<br />
 		<br />
 		Select the disk: <br/>
