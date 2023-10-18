@@ -8,7 +8,7 @@
 SVera is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
 --->
-<h>Project on Construction<h>
+<h>Project in Construction<h>
 <h2>Description</h2>
 		The project consists on Migrate The Luxxy-Covid-19 testing results system componentes Webserver (VM), Database (MySQL) and Data from the Corpore Data-Center (On-Premise), over the Multi-Cloud Platform environment (GCP and AWS) architecture. To cary out this assignment a Multi-Cloud architecture with resources running in AWS and Google Cloud Platform would be deployed using a combination of Infrastructure as Code (IaC) tools to run scripts and the GUI interface of the cloud platform. 
 The Multi-Cloud infrastructure and resources's provision will be carry out through (IaC) Terraform scripts running in AWS and Google Cloud Platforms.
@@ -17,21 +17,65 @@ The Multi-Cloud infrastructure and resources's provision will be carry out throu
   
 			
 
-		<h2>Languages and Utilities Used</h2>
+	(IaC) Infrastructure as Code tool Used:
+		- Terraform  
+
+	Cloud Platform:
+      	- Google Cloud Platform and AWS Cloud Platform
+
+	Cloud Infrastructure Solutions:
+      	- SQL API
+		- VM API
 		
-		- <b>Terraform</b> 
-		- <b>GCP and AWS Cloud Shells</b>
+	Resources Provisioned:
+		- Container Registry API
+ 		- Kubernetes Cluster API
+    	- Kubernetes Image API
+      	- Kubernetes Nodes API
+    
+    
 		
-		<h2>Environments Used </h2>
-		
-		- <b>Container Registry API</b> (21H2)
-    - <b>Kubernetes Engine API</b>
-    - <b>Cloud SQL API</b>
-		
-		<h2>Program walk-through:</h2>
+                                                                                                                                                                                            
+                    
+**######MultiCloud – Terraform – Ansible – Docker & Kubernetes and DevOps######**   :
+>  **####Project: Deploy the below Solution Architecture.####**   
+
 ![image1 Solution Architecture](https://github.com/sva12000/SVera/assets/43139150/018fb5dc-9e3f-49aa-8bbf-b177bc44b32a)
 
+-	Access AWS console and go to IAM service
+-	Under Access management, Click in "Users", then "Add users". Insert the User name terraform-en-1 and click in Next to create a programmatic user.
+-	On Set permissions, Permissions options, click in "Attach policies directly" button.
+-	Type AmazonS3FullAccess in Search.
+-	Select AmazonS3FullAccess
+-	Click in Next
+-	Review all details, then click Create user.
+-	**[NEW] AWS has recently changed the way to download the key.**
+-	Follow the new steps:
+-	Click on the user you have created.
+-	After this, click on Security credentials tab.
+-	Scroll down and go to Access keys section.
+-	Click on Create access key
+-	Select Command Line Interface (CLI) and I understand the above recommendation and want to proceed to create an access key checkbox.
+-	Click Next.
+-	Click on Create access key
+-	Click on Download .csv file
+-	After the download is finished, click on Done
+	
+**[TIP] Access key best practices**
+-	Never store your access key in plain text, in a code repository, or in code.
+-	Disable or delete access key when no longer needed.
+-	Enable least-privilege permissions.
+-	Rotate access keys regularly.
+-	After downloading, click Done.
+-	Now, rename .csv file downloaded to accessKeys.csv                                                                                                                                                  
+
 ![image2](https://github.com/sva12000/SVera/assets/43139150/6034c444-08ca-4833-b342-d988e50edad3)
+**Google Cloud Platform (GCP)**
+-	CLICK HERE to download the mission1.zip hands-on files.
+-	Access GCP Console and open Cloud Shell
+-	Upload **accessKeys.csv** and **mission1.zip** hands-on file to GCP Cloud Shell
+-	Check if upload has been successfully completed using the command ls -la
+-	Hands-on files preparation
 
 ![image3](https://github.com/sva12000/SVera/assets/43139150/48834ee1-23f4-4f18-bbe5-bee69f6568fc)
 
@@ -41,13 +85,50 @@ The Multi-Cloud infrastructure and resources's provision will be carry out throu
 
 ![image6](https://github.com/sva12000/SVera/assets/43139150/d5a8cfd6-2ffe-4ddc-9061-1ac97f0d8287)
 
+•	Run the following commands to prepare AWS and GCP environment. Authorize when asked.
+
+**./aws_set_credentials.sh accessKeys.csv**
+
+
 ![image7](https://github.com/sva12000/SVera/assets/43139150/caab2b30-21a3-4299-9ea8-d25004920039)
+**gcloud config set project <project_id>**
+
 
 ![imaage8](https://github.com/sva12000/SVera/assets/43139150/e3e162fe-7922-4e40-a2e5-4edaf191c945)
 
+•Execute the command below
+
+**./gcp_set_project.sh**
+
+
 ![image9](https://github.com/sva12000/SVera/assets/43139150/4d40baa8-3626-4a1d-869e-eb73665ab26a)
 
+
+
+
 ![image10](https://github.com/sva12000/SVera/assets/43139150/624a0433-1861-416d-a793-d5e297db0464)
+
+•Enable the Container Registry API, Kubernetes Engine API and the Cloud SQL API
+
+**gcloud services enable containerregistry.googleapis.com** 
+
+**gcloud services enable container.googleapis.com** 
+
+**gcloud services enable sqladmin.googleapis.com**
+
+**IMPORTANT (DO NOT SKIP):**
+•	Before executing the Terraform commands, 
+-   open the Google Editor and update the file tcb_aws_storage.tf
+-   replacing the bucket name with an unique name (AWS requires unique bucket names).
+o	Open the tcb_aws_storage.tf using Google Editor
+o	On line 4 of the file tcb_aws_storage.tf: 
+	Replace xxxx with your name initials, using 5 letters plus 5 random numbers: Example: luxxy-covid-testing-system-pdf-en-jerod29292
+
+
+
+
+
+
 
 ![image11](https://github.com/sva12000/SVera/assets/43139150/8c24fc7e-ff90-493a-8cf5-412936a2ab73)
 
@@ -143,8 +224,8 @@ The Multi-Cloud infrastructure and resources's provision will be carry out throu
 
 
 
-
-
+**######MultiCloud – Terraform – Ansible – Kubernetes and DevOps######**
+     **####Project: Deploy the below Solution Architecture.####**   
 
 
 
