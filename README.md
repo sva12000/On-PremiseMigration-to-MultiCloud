@@ -42,6 +42,7 @@ The Multi-Cloud infrastructure and resources's provision will be carry out throu
 
 ![image1 Solution Architecture](https://github.com/sva12000/SVera/assets/43139150/018fb5dc-9e3f-49aa-8bbf-b177bc44b32a)
 
+**Task 1**
 -	Access AWS console and go to IAM service
 -	Under Access management, Click in "Users", then "Add users". Insert the User name terraform-en-1 and click in Next to create a programmatic user.
 -	On Set permissions, Permissions options, click in "Attach policies directly" button.
@@ -72,6 +73,7 @@ The Multi-Cloud infrastructure and resources's provision will be carry out throu
 ![image2](https://github.com/sva12000/SVera/assets/43139150/6034c444-08ca-4833-b342-d988e50edad3)
 **Google Cloud Platform (GCP)**
 -	CLICK HERE to download the mission1.zip hands-on files.
+-	**[Https://](https://tcb-public-events.s3.amazonaws.com/icp/mission1.zip)**
 -	Access GCP Console and open Cloud Shell
 -	Upload **accessKeys.csv** and **mission1.zip** hands-on file to GCP Cloud Shell
 -	Check if upload has been successfully completed using the command ls -la
@@ -117,64 +119,245 @@ The Multi-Cloud infrastructure and resources's provision will be carry out throu
 **gcloud services enable sqladmin.googleapis.com**
 
 **IMPORTANT (DO NOT SKIP):**
-•	Before executing the Terraform commands, 
--   open the Google Editor and update the file tcb_aws_storage.tf
--   replacing the bucket name with an unique name (AWS requires unique bucket names).
-o	Open the tcb_aws_storage.tf using Google Editor
-o	On line 4 of the file tcb_aws_storage.tf: 
-	Replace xxxx with your name initials, using 5 letters plus 5 random numbers: Example: luxxy-covid-testing-system-pdf-en-jerod29292
-
-
-
-
-
+-	Before executing the Terraform commands:
+-	Open the Google Editor and update the file tcb_aws_storage.tf replacing the bucket name with an unique name (AWS requires unique bucket names).
+-	**STEPS:**
+-	Open the tcb_aws_storage.tf using Google Editor
+-	On line 4 of the file tcb_aws_storage.tf:
+-	Replace xxxx with your name initials, using 5 letters plus 5 random numbers: Example: luxxy-covid-testing-system-pdf-en-sergio40404
 
 
 ![image11](https://github.com/sva12000/SVera/assets/43139150/8c24fc7e-ff90-493a-8cf5-412936a2ab73)
 
+
+•Issue these commands to complete the provision infrastructure steps
+- cd ~/mission1_en/mission1/en/terraform/
+- terraform init
+- terraform plan
+- terraform apply
+- Type **Yes**
+- Note: It might take 15 to 25 minutes to create the Cloud SQL database, make sure to check the CloudShell to click Reconnect when the session expires (the session expires after 5 minutes of inactivity by default)
+-  The warning message at the end of terraform apply command execution is not a problem, continue with the steps:
+
+
 ![image12](https://github.com/sva12000/SVera/assets/43139150/0a14ede0-797b-4162-95b5-bbe46dfe5b2d)
+
+- Issue the **"ls"** command to see that the files in this folder
 
 ![image13](https://github.com/sva12000/SVera/assets/43139150/53b405c0-177a-4a64-b2a5-9a24b5b09e94)
 
+**-terraform init**
+
 ![image14](https://github.com/sva12000/SVera/assets/43139150/e93983e4-1ff9-40f2-af4d-843ab72bbb01)
+
+**-terraform Plan**
 
 ![image15](https://github.com/sva12000/SVera/assets/43139150/e952c2be-8bbe-4403-93a0-983bc26c9770)
 
-![image16](https://github.com/sva12000/SVera/assets/43139150/2a27c17b-fd92-4b64-884a-2d2007905752)
+**-terraform apply**
 
 ![image17](https://github.com/sva12000/SVera/assets/43139150/89737efc-b03b-42eb-a28d-7ae5ee97c3e0)
 
+**- Type "Yes"**
+
 ![image18](https://github.com/sva12000/SVera/assets/43139150/36540a27-7953-4f27-bd34-6296b2fa056d)
+
+SQL Network Configuration
+SQL Networking Configuration_EDITED.mov
+•	Once the Cloud SQL instance is provisioned, access the Cloud SQL service
+•	Click on your Cloud SQL instance.
+•	On the left side, under Primary Instance, click on Connections.
+•	Go to Networking tab.
+•	Under Instance IP assignment, select Private IP to enable. 
+o	Under Associated networking, select "Default"
+o	Click Set up Connection
+o	Click on Enable API, to enable Service Networking API (if asked).
+o	Select Use an automatically allocated IP range in your network.
+o	Click Continue
+o	Click Create Connection and wait a minutes until conclude. You will see the message: “Private services access connection for network default  has been successfully created.”
+•	Under Authorized Networks, click "Add Network".
+•	Under New Network, enter the following information: 
+o	Name: Public Access (For testing purposes only)
+o	Network: 0.0.0.0/0
+o	Click Done.
+o	Click Save and ****wait to finish the update. This update may take from 10 to 20 minutes to finish
+PS: For production environments, it is recommended to use only the Private Network for database access. ⚠️ Never grant public network access (0.0.0.0/0) to production databases.
+
+
+**Task 2**
+
+Amazon Web Services
+•	Access AWS console and go to IAM service
+•	Under Access management, Click in "Users", then "Add users". Insert the User name luxxy-covid-testing-system-en-app1 and click in Next to create a programmatic user.
+
+![imageA](https://github.com/sva12000/SVera/assets/43139150/177c2bc0-f8ba-4c3f-9963-2fbd79286bf3)
+
+•On Set permissions, Permissions options, click in "Attach policies directly" button
+
+![imageB](https://github.com/sva12000/SVera/assets/43139150/1b2aaa60-b994-48cd-8b63-c5b7ab03cb9d)
+
+•	**Type AmazonS3FullAccess in Search.**
+
+•	**Select AmazonS3FullAccess**
+
+![imageC](https://github.com/sva12000/SVera/assets/43139150/bf00784e-c3e6-4ee1-a9a6-a4d485167797)
+
+•	Click in Next
+•	Review all details and click in Create user
+
+![imageD](https://github.com/sva12000/SVera/assets/43139150/22820a71-c72b-4e53-9c69-a07a33fd8e36)
+
+Steps to create access key:
+•	Click on the user you have created.
+•	Go to Security credentials tab.
+•	Scroll down and go to Access keys section.
+•	Click on Create access key
+
+![imageE](https://github.com/sva12000/SVera/assets/43139150/82b7ee23-af48-4934-aae0-70892751b2bd)
+
+
+- Programmatic user created
+
+
 
 ![image19](https://github.com/sva12000/SVera/assets/43139150/3cb89e84-3846-4bda-ac98-6d7a73dd5859)
 
+- Google Cloud Platform (GCP)
+- Navigate to Cloud SQL instance and create a new user app with password welcome123456 on Cloud SQL MySQL database
+
+
 ![image20](https://github.com/sva12000/SVera/assets/43139150/9c39daa5-6c54-44aa-bf26-15ad71523f88)
+
+
+•	Connect to Google Cloud Shell
+
+•	Download the mission2 files to Google Cloud Shell using the wget command as shown below
+
+- 	Copy below commands to execute above instructions.
+
+ cd ~
+ 
+ mkdir mission2_en
+ 
+ cd mission2_en
+ 
+ wget <https://tcb-public-events.s3.amazonaws.com/icp/mission2.zip
+ 
+ unzip mission2.zip
+
+• Connect to MySQL DB running on Cloud SQL (once it prompts for the password, provide welcome123456)
+
 
 ![image21](https://github.com/sva12000/SVera/assets/43139150/d8263d70-688f-490b-89d5-7d3b81e49e13)
 
+- Continuation of files still being unziped
+
 ![image22](https://github.com/sva12000/SVera/assets/43139150/4bc1a593-a554-422a-acee-a65554e42bbf)
+
+
+• Execute below command to connect to MySQL DB running on Cloud SQL (once it prompts for the password, provide welcome123456)
+
+mysql --host=<public_ip_cloudsql> --port=3306 -u app -p
+
+• Enter below commands and Once you're connected to the database instance, create the products table for testing purposes
+
+
+use dbcovidtesting;
+
+source ~/mission2_en/mission2/en/db/create_table.sql
+
+show tables;
+
+exit;
+
 
 ![image23](https://github.com/sva12000/SVera/assets/43139150/9df91110-5b70-42c3-989f-0e18ac5d400e)
 
+- Replace <public_ip_cloudsql> with IP Address
+
 ![image24](https://github.com/sva12000/SVera/assets/43139150/1955596a-22c4-4dcd-8172-80de1055524c)
+
+- Provide Password **welcome123456** 
 
 ![image25](https://github.com/sva12000/SVera/assets/43139150/a60f1a6b-e572-48d0-a1da-ce56b2cba3cf)
 
+use dbcovidtesting;
+
+source ~/mission2_en/mission2/en/db/create_table.sql
+
+show tables;
+
+exit;
+
 ![image26](https://github.com/sva12000/SVera/assets/43139150/b03f4f4e-2717-4fe0-a979-42fc3b8ef680)
+
+• Enable Cloud Build API via Cloud Shell.
+
+- Issue below Command to enable Cloud Build API
+
+**gcloud services enable cloudbuild.googleapis.com**
+
 
 ![image27](https://github.com/sva12000/SVera/assets/43139150/140cf388-f1d4-4590-8cc6-63db2c012764)
 
+
+
 ![image28](https://github.com/sva12000/SVera/assets/43139150/22880706-a047-4c16-b3eb-a5641aad0184)
+
+• Build the Docker image and push it to Google Container Registry. Please replace the <PROJECT_ID> with your My First Project ID.
+
+**cd ~/mission2_en/mission2/en/app**
+
+**gcloud builds submit --tag gcr.io/<PROJECT_ID>/luxxy-covid-testing-system-app-en**
+
 
 ![image29](https://github.com/sva12000/SVera/assets/43139150/64f7dfac-5785-4a2b-aa2a-08d9589af28c)
 
+
+
 ![image30](https://github.com/sva12000/SVera/assets/43139150/28dcacba-5ecb-41d2-83ad-c1e88372ab4c)
+
+**gcloud builds submit --tag gcr.io/<PROJECT_ID>/luxxy-covid-testing-system-app-en**
 
 ![image31](https://github.com/sva12000/SVera/assets/43139150/a1368dc5-8ceb-427a-8db4-03f8b3f506ca)
 
+
 ![image32](https://github.com/sva12000/SVera/assets/43139150/63b5001c-91a8-4375-8c2e-a79daa86e557)
 
+
+- See Docker images already pushed in to Google Container Registry
 ![image33](https://github.com/sva12000/SVera/assets/43139150/e5cc9e8a-ca7e-4883-9734-0d86fd5ec55f)
+
+• Open the Cloud Editor and edit the Kubernetes deployment file (luxxy-covid-testing-system.yaml) and update the variables below.
+
+- On line 33 in red with your <PROJECT_ID> on the Google Container Registry path.
+
+- On line 42 AWS Bucket name, AWS Keys (open file luxxy-covid-testing-system-en-app1.csv and use Access key ID.
+- 
+- On line 44 and Secret access key, on line 46) and Cloud SQL Database Private IP on line 48.
+  
+cd ~/mission2/en/kubernetes
+
+luxxy-covid-testing-system.yaml
+
+image: gcr.io/**<PROJECT_ID>/**luxxy-covid-testing-system-app-en:latest
+...
+	- name: AWS_BUCKET
+ 
+          value: "**luxxy-covid-testing-system-pdf-en-xxxx**"
+	  
+        - name: S3_ACCESS_KEY
+	
+          value: "**xxxxxxxxxxxxxxxxxxxxx**"
+	  
+        - name: S3_SECRET_ACCESS_KEY
+	
+          value: "**xxxxxxxxxxxxxxxxxxxx**"
+	  
+        - name: DB_HOST_NAME
+	
+          value: "**172.21.0.3**"
+
 
 ![image34](https://github.com/sva12000/SVera/assets/43139150/144ee82c-c1d8-492f-afad-093c7404ec84)
 
@@ -192,13 +375,38 @@ o	On line 4 of the file tcb_aws_storage.tf:
 
 ![image41](https://github.com/sva12000/SVera/assets/43139150/8ffdbd2e-bbaa-438c-81e4-1433054cccb5)
 
+
+• Connect to the GKE (Google Kubernetes Engine) cluster via Console 
+
+- Deploy the application Luxxy in the Cluster
+
+**cd ~/mission2_en/mission2/en/kubernetes**
+
 ![image42](https://github.com/sva12000/SVera/assets/43139150/06240037-a52d-422e-a043-7479c1555f14)
+
+•	Deploy the application Luxxy in the Cluster
+
+**kubectl apply -f luxxy-covid-testing-system.yaml**
 
 ![image43](https://github.com/sva12000/SVera/assets/43139150/0d67ab0b-2fde-4f9f-b18b-e34256747f48)
 
+
+•	Get the Public IP and test the application (CLICK HERE to download COVID-19 Testing result sample). 
+
+-	Search for GKE, click on Services & Ingress, and then on Endpoints address:port
+  
+
+
+
 ![image44](https://github.com/sva12000/SVera/assets/43139150/16f5ef75-aea8-4f22-b9fd-4062783156cb)
 
+•	You should see the Webapp up & running! Congrats! 
+
+
 ![image45](https://github.com/sva12000/SVera/assets/43139150/a7ee6f26-1063-4afe-882d-3511e1882648)
+
+
+**Taks3**
 
 ![image46](https://github.com/sva12000/SVera/assets/43139150/8bd9b5e9-d58c-4b0f-89cc-02587f57b3cc)
 
