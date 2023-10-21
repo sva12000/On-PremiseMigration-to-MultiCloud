@@ -251,7 +251,7 @@ o	**Click Save and wait to finish the update.** **This update may take from 10 t
 •	Download the **mission2 files** to Google Cloud Shell using the **wget command** as shown below
 
 - 	**Copy below commands to execute above instructions.**
-**
+- 	
  **cd ~**
  
  **mkdir mission2_en**
@@ -290,7 +290,7 @@ o	**Click Save and wait to finish the update.** **This update may take from 10 t
 
 ![image23](https://github.com/sva12000/SVera/assets/43139150/9df91110-5b70-42c3-989f-0e18ac5d400e)
 
-- Replace <public_ip_cloudsql> with IP Address
+- Replace **<public_ip_cloudsql>** with IP Address
 
 ![image24](https://github.com/sva12000/SVera/assets/43139150/1955596a-22c4-4dcd-8172-80de1055524c)
 
@@ -342,17 +342,22 @@ exit;
 ![image32](https://github.com/sva12000/SVera/assets/43139150/63b5001c-91a8-4375-8c2e-a79daa86e557)
 
 
+**After all the files are pushed you go and search for container Registry Blade, select IMAGE and you will see the Docker container created on it, click on it and you will see the docker image on the next windows.**
+
 - **See Docker images already pushed in to Google Container Registry**
-- 
+  
 ![image33](https://github.com/sva12000/SVera/assets/43139150/e5cc9e8a-ca7e-4883-9734-0d86fd5ec55f)
+
 
 • **Open the Cloud Editor and edit the Kubernetes deployment file (luxxy-covid-testing-system.yaml) and update the variables below.**
 
 - On line 33 in red with your <PROJECT_ID> on the Google Container Registry path.
 
-- On line 42 AWS Bucket name, AWS Keys (open file luxxy-covid-testing-system-en-app1.csv and use Access key ID
-- 
-- On line 44 and Secret access key, on line 46) and Cloud SQL Database Private IP on line 48.
+- On line 42 AWS Bucket name, AWS Keys (**open file luxxy-covid-testing-system-en-app1.csv and use Access key ID on line 44 and Secret access key, on line 46)** and from
+
+- **Cloud SQL Database page copy Private IP on line 48.**
+
+  To acomplish the above in the open editor page navegate to the folder to access the kubernetes forlder and click on it. follow below instructions.
 
   
 cd ~/mission2/en/kubernetes
@@ -377,64 +382,158 @@ image: gcr.io/**<PROJECT_ID>/**luxxy-covid-testing-system-app-en:latest
 	
           value: "**172.21.0.3**"
 
-- name: AWS_BUCKET
+   REPLACE <PROJECT_ID> word with your actually project_ID.
+
+- image: gcr.io/<PROJECT_ID>/luxxy-covid-testing-system-app-en:latest
   
 ![image34](https://github.com/sva12000/SVera/assets/43139150/144ee82c-c1d8-492f-afad-093c7404ec84)
+
+
+On line 42 replace the xxxx
 
 "**luxxy-covid-testing-system-pdf-en-xxxx**"
 
 ![image35](https://github.com/sva12000/SVera/assets/43139150/b8b9c79d-e241-4ff0-bff6-ac01d50610af)
 
-Copy and paste AWS Bucket S3 Access Key ID and S3 Secret Access Key from the luxxy-covid-testing-system-en-app1.csv file downloaded when the user was created
 
- - name: S3_ACCESS_KEY
+
 
 ![image36](https://github.com/sva12000/SVera/assets/43139150/45c4f4a6-dbf1-48f5-8d8d-5b9887513ec5)
 
+Copy to line 44 and 46, AWS Bucket S3 **Access Key ID and S3 Secret Access Key** from the luxxy-covid-testing-system-en-app1.csv file downloaded when the user was created and 
 
+
+- 
 
 ![image37](https://github.com/sva12000/SVera/assets/43139150/eb2586a3-9bc1-4d74-82fc-6280d2ad9518)
 
+
+- **From CLOUD SQL page copy the private IP address of the instance and add it to line 48 under the name: DB_HOST_NAME**
+
 ![image38](https://github.com/sva12000/SVera/assets/43139150/fe97478d-6c13-4589-bade-7c4ee9ee1e5a)
+
+
+Connect to the GKE (Google Kubernetes Engine) cluster via Console (click RUN IN CLOUD SHELL) Follow below steps** 
+
+**Steps:**
+
+**On Kubernetes Engine menu page > Click on CONNECT tab**
+
+**On the pop up CONNECT TO THE CLUSTER page > Click on RUN IN CLOUD SHELL**
+
+![imageConnecttoGKE](https://github.com/sva12000/SVera/assets/43139150/0586427d-aa53-4bb0-8071-5b20dbb98a36)
+
+**PRESS ENTER**
 
 ![image39](https://github.com/sva12000/SVera/assets/43139150/ac1f95dd-9add-456f-8e86-244eb663c2b1)
 
+
+- **You can see you are connected to my Kubernetes-cluster**
+
 ![image40](https://github.com/sva12000/SVera/assets/43139150/3e25b912-9f4c-4c7d-9ef2-9c3e32a9a972)
+
+
+- Just run the “kubectl get nodes” command and you will see how many nodes you have inside your Kubernetes cluster it is gonna return something or it will give you an error.
+
+- Right now you do not have any nodes available in the cluster. It is gonna actually deploy it because we are using an auto-pilot cluster.
+  
+- You re going to see the deployed the application, but it is working.
+
+- So now we are going to go ahead and deploy our application in the next step
+
+
+Run **"kubectl get nodes"** command to see how many nodes are running make sure you are in the right path **/mission2_en/mission2/en/app**
 
 ![image41](https://github.com/sva12000/SVera/assets/43139150/8ffdbd2e-bbaa-438c-81e4-1433054cccb5)
 
 
-• Connect to the GKE (Google Kubernetes Engine) cluster via Console 
 
-- Deploy the application Luxxy in the Cluster
+- Deploy the application Luxxy in the Cluster,but fisrt change to the Kubernetes folder.
 
 **cd ~/mission2_en/mission2/en/kubernetes**
 
 ![image42](https://github.com/sva12000/SVera/assets/43139150/06240037-a52d-422e-a043-7479c1555f14)
 
-•	Deploy the application Luxxy in the Cluster
+The next command will deploy the application inside of the cluster.     
+
+– The reason for the warning is th-the Kubernetes cluster on Google Cloud is very cost-efficient.
+
+- If you don’t have any application running in the cluster, it will not hold any resources in there.
+- 
+- As soon as you deploy the first application the Kubernetes is going to add the number of nodes to the cluster.
+                                                                                                                                                                                                          – So the node can server your application.
+
+
+**Warning:** autopilot-default-resources-mutator: Autopilot updated Deployment default/luxxy-covid-testing-system: defaulted unspecified resources for containers [luxxy-covid-testing-system]
+
+  (see http://g.co/gke/autopilot-defaults) deployment.apps/luxxy-covid-testing-system created service/luxxy-covid-testing-system configured
+
+• Use **kubectl apply -f**  command to Deploy the application Luxxy in the Cluster
 
 **kubectl apply -f luxxy-covid-testing-system.yaml**
 
 ![image43](https://github.com/sva12000/SVera/assets/43139150/0d67ab0b-2fde-4f9f-b18b-e34256747f48)
 
+Next we click on Workload on Kubernetes Engine Blade and you see under Overview the name and status are OK deployment 1/1 pods, namespace as default, and the cluster.  
 
-•	Get the Public IP and test the application (CLICK HERE to download COVID-19 Testing result sample). 
+–  If you get a message like “ It was not possible to deploy the application”                                                                          
 
--	Search for GKE, click on Services & Ingress, and then on Endpoints address:port
+-  The reason could be that Kkubernetes is going to outscale it.
+
+-  If you look in the memory…. Meaning the Kubernetes is updating itself. So in a few minutes the application will up and running.
+
+-  Click on services & ingress
+
+-  You see it also creating the service endpoint
+
+-  The external load balancer that we can test the application remotely
+
+-  Next on cloud shell terminal type “ kubectl get nodes” command.
+
+
+
+- You can see Kubernetes Cluster added a new node to serve the application that we have requested. This behavior is not the same with all the cloud providers
+
+- Next on services & ingress click on enpoint Ip address and the web page application will show up
+
+-   meaning this application is communicating with Google Cloud SQL on Google cloud also is communicating with AWS bucket sitting on AWS
+
+
+
+
+•	Get the Public IP and test the application (CLICK HERE to download COVID-19 Testing result sample https://tcb-events.s3.amazonaws.com/icp/mission2.zip ). 
+
+-	Search for GKE, click on Services & Ingress, and then on Endpoints address:port  IP address
   
 
 
 
 ![image44](https://github.com/sva12000/SVera/assets/43139150/16f5ef75-aea8-4f22-b9fd-4062783156cb)
 
-•	You should see the Webapp up & running! Congrats! 
+•	You should see the Webapp up & running! Congrats!
 
 
 ![image45](https://github.com/sva12000/SVera/assets/43139150/a7ee6f26-1063-4afe-882d-3511e1882648)
 
+- Migration Done so far
+![imagemission2Donesofar](https://github.com/sva12000/SVera/assets/43139150/99b397fa-21d1-4174-81c8-0609b36a67af)
+
+
 
 **Taks3**
+
+-  We are going to migrate both databases including the PDF data, which has the COVID-19 testing results from the On-premises application server to the S3 Bucket
+
+
+- Google Cloud Platform - Database Migration steps
+•	Connect to Google Cloud Shell
+•	Download the dump using wget
+cd ~
+mkdir mission3_en
+cd mission3_en
+wget https://tcb-public-events.s3.amazonaws.com/icp/mission3.zip
+unzip mission3.zip
+
 
 ![image46](https://github.com/sva12000/SVera/assets/43139150/8bd9b5e9-d58c-4b0f-89cc-02587f57b3cc)
 
