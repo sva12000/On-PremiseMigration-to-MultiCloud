@@ -162,37 +162,54 @@ The Multi-Cloud infrastructure and resources's provision will be carry out throu
 
 ![image18](https://github.com/sva12000/SVera/assets/43139150/36540a27-7953-4f27-bd34-6296b2fa056d)
 
-SQL Network Configuration
-SQL Networking Configuration_EDITED.mov
-•	Once the Cloud SQL instance is provisioned, access the Cloud SQL service
-•	Click on your Cloud SQL instance.
-•	On the left side, under Primary Instance, click on Connections.
-•	Go to Networking tab.
-•	Under Instance IP assignment, select Private IP to enable. 
-o	Under Associated networking, select "Default"
-o	Click Set up Connection
-o	Click on Enable API, to enable Service Networking API (if asked).
-o	Select Use an automatically allocated IP range in your network.
-o	Click Continue
-o	Click Create Connection and wait a minutes until conclude. You will see the message: “Private services access connection for network default  has been successfully created.”
-•	Under Authorized Networks, click "Add Network".
-•	Under New Network, enter the following information: 
-o	Name: Public Access (For testing purposes only)
-o	Network: 0.0.0.0/0
-o	Click Done.
-o	Click Save and ****wait to finish the update. This update may take from 10 to 20 minutes to finish
-PS: For production environments, it is recommended to use only the Private Network for database access. ⚠️ Never grant public network access (0.0.0.0/0) to production databases.
+**SQL Network Configuration**
+
+•	**Once the Cloud SQL instance is provisioned, access the Cloud SQL service**
+
+•	**Click on your Cloud SQL instance.**
+
+•	**On the left side, under Primary Instance, click on Connections.****
+
+•	**Go to Networking tab.**
+
+•	**Under Instance IP assignment, select Private IP to enable**. 
+
+o	**Under Associated networking, select "Default"**
+
+o	**Click Set up Connection**
+
+o	**Click on Enable API, to enable Service Networking API (if asked).**
+
+o	**Select Use an automatically allocated IP range in your network.**
+
+o	**Click Continue**
+
+o	**Click Create Connection and wait a minutes until conclude. You will see the message: “Private services access connection for network default  has been successfully created.”**
+
+•	**Under Authorized Networks, click "Add Network".**
+
+•	**Under New Network, enter the following information:**
+
+o	**Name: Public Access (For testing purposes only)**
+
+o	**Network: 0.0.0.0/0**
+
+o	**Click Done.**
+
+o	**Click Save and wait to finish the update.** **This update may take from 10 to 20 minutes to finish**
+
+**PS: For production environments, it is recommended to use only the Private Network for database access. ⚠️ Never grant public network access (0.0.0.0/0) to production databases.**
 
 
-**Task 2**
+**###Task 2###**
 
-Amazon Web Services
-•	Access AWS console and go to IAM service
-•	Under Access management, Click in "Users", then "Add users". Insert the User name luxxy-covid-testing-system-en-app1 and click in Next to create a programmatic user.
+**Amazon Web Services**
+•	**Access AWS console and go to IAM service**
+•	**Under Access management, Click in "Users", then "Add users". Insert the User name luxxy-covid-testing-system-en-app1 and click in Next to create a programmatic user.**
 
 ![imageA](https://github.com/sva12000/SVera/assets/43139150/177c2bc0-f8ba-4c3f-9963-2fbd79286bf3)
 
-•On Set permissions, Permissions options, click in "Attach policies directly" button
+• **On Set permissions, Permissions options, click in "Attach policies directly" button**
 
 ![imageB](https://github.com/sva12000/SVera/assets/43139150/1b2aaa60-b994-48cd-8b63-c5b7ab03cb9d)
 
@@ -207,7 +224,7 @@ Amazon Web Services
 
 ![imageD](https://github.com/sva12000/SVera/assets/43139150/22820a71-c72b-4e53-9c69-a07a33fd8e36)
 
-Steps to create access key:
+**Steps to create access key:**
 •	Click on the user you have created.
 •	Go to Security credentials tab.
 •	Scroll down and go to Access keys section.
@@ -216,59 +233,59 @@ Steps to create access key:
 ![imageE](https://github.com/sva12000/SVera/assets/43139150/82b7ee23-af48-4934-aae0-70892751b2bd)
 
 
-- Programmatic user created
+- **Programmatic user created**
 
 
 
 ![image19](https://github.com/sva12000/SVera/assets/43139150/3cb89e84-3846-4bda-ac98-6d7a73dd5859)
 
-- Google Cloud Platform (GCP)
-- Navigate to Cloud SQL instance and create a new user app with password welcome123456 on Cloud SQL MySQL database
+- **Google Cloud Platform (GCP)**
+- Navigate to Cloud SQL instance and create a new user app with **password welcome123456** on Cloud SQL MySQL database
 
 
 ![image20](https://github.com/sva12000/SVera/assets/43139150/9c39daa5-6c54-44aa-bf26-15ad71523f88)
 
 
-•	Connect to Google Cloud Shell
+•	**Connect to Google Cloud Shell**
 
-•	Download the mission2 files to Google Cloud Shell using the wget command as shown below
+•	Download the **mission2 files** to Google Cloud Shell using the **wget command** as shown below
 
-- 	Copy below commands to execute above instructions.
+- 	**Copy below commands to execute above instructions.**
+**
+ **cd ~**
+ 
+ **mkdir mission2_en**
+ 
+ **cd mission2_en**
+ 
+ **wget <https://tcb-public-events.s3.amazonaws.com/icp/mission2.zip**
+ 
+ **unzip mission2.zip**
 
- cd ~
- 
- mkdir mission2_en
- 
- cd mission2_en
- 
- wget <https://tcb-public-events.s3.amazonaws.com/icp/mission2.zip
- 
- unzip mission2.zip
-
-• Connect to MySQL DB running on Cloud SQL (once it prompts for the password, provide welcome123456)
+• Connect to MySQL DB running on Cloud SQL (once it prompts for the password, provide **welcome123456**)
 
 
 ![image21](https://github.com/sva12000/SVera/assets/43139150/d8263d70-688f-490b-89d5-7d3b81e49e13)
 
-- Continuation of files still being unziped
+-**Continuation of files still being unziped**
 
 ![image22](https://github.com/sva12000/SVera/assets/43139150/4bc1a593-a554-422a-acee-a65554e42bbf)
 
 
 • Execute below command to connect to MySQL DB running on Cloud SQL (once it prompts for the password, provide welcome123456)
 
-mysql --host=<public_ip_cloudsql> --port=3306 -u app -p
+**mysql --host=<public_ip_cloudsql> --port=3306 -u app -p**
 
 • Enter below commands and Once you're connected to the database instance, create the products table for testing purposes
 
 
-use dbcovidtesting;
+**use dbcovidtesting;**
 
-source ~/mission2_en/mission2/en/db/create_table.sql
+**source ~/mission2_en/mission2/en/db/create_table.sql**
 
-show tables;
+**show tables;**
 
-exit;
+**exit;**
 
 
 ![image23](https://github.com/sva12000/SVera/assets/43139150/9df91110-5b70-42c3-989f-0e18ac5d400e)
@@ -325,16 +342,18 @@ exit;
 ![image32](https://github.com/sva12000/SVera/assets/43139150/63b5001c-91a8-4375-8c2e-a79daa86e557)
 
 
-- See Docker images already pushed in to Google Container Registry
+- **See Docker images already pushed in to Google Container Registry**
+- 
 ![image33](https://github.com/sva12000/SVera/assets/43139150/e5cc9e8a-ca7e-4883-9734-0d86fd5ec55f)
 
-• Open the Cloud Editor and edit the Kubernetes deployment file (luxxy-covid-testing-system.yaml) and update the variables below.
+• **Open the Cloud Editor and edit the Kubernetes deployment file (luxxy-covid-testing-system.yaml) and update the variables below.**
 
 - On line 33 in red with your <PROJECT_ID> on the Google Container Registry path.
 
-- On line 42 AWS Bucket name, AWS Keys (open file luxxy-covid-testing-system-en-app1.csv and use Access key ID.
+- On line 42 AWS Bucket name, AWS Keys (open file luxxy-covid-testing-system-en-app1.csv and use Access key ID
 - 
 - On line 44 and Secret access key, on line 46) and Cloud SQL Database Private IP on line 48.
+
   
 cd ~/mission2/en/kubernetes
 
@@ -358,12 +377,21 @@ image: gcr.io/**<PROJECT_ID>/**luxxy-covid-testing-system-app-en:latest
 	
           value: "**172.21.0.3**"
 
-
+- name: AWS_BUCKET
+  
 ![image34](https://github.com/sva12000/SVera/assets/43139150/144ee82c-c1d8-492f-afad-093c7404ec84)
+
+"**luxxy-covid-testing-system-pdf-en-xxxx**"
 
 ![image35](https://github.com/sva12000/SVera/assets/43139150/b8b9c79d-e241-4ff0-bff6-ac01d50610af)
 
+Copy and paste AWS Bucket S3 Access Key ID and S3 Secret Access Key from the luxxy-covid-testing-system-en-app1.csv file downloaded when the user was created
+
+ - name: S3_ACCESS_KEY
+
 ![image36](https://github.com/sva12000/SVera/assets/43139150/45c4f4a6-dbf1-48f5-8d8d-5b9887513ec5)
+
+
 
 ![image37](https://github.com/sva12000/SVera/assets/43139150/eb2586a3-9bc1-4d74-82fc-6280d2ad9518)
 
