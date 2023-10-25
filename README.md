@@ -1,7 +1,5 @@
 - 👋 Hi, I’m @svera
-- 👀 I’m interested in cyber security and writing code...
-- 🌱 I’m currently enhancing my multi-cloud platform skills...
-- 💞️ I’m looking to collaborate on ...
+- 👀 A cyber security Professional also interested in Multi-Cloud and writing code...
 - 📫 How to reach me sergiov0303@gmail.com ...
 
 <!---
@@ -204,13 +202,99 @@ o	**Click Save and wait to finish the update.** **This update may take from 10 t
 
 **PS: For production environments, it is recommended to use only the Private Network for database access. ⚠️ Never grant public network access (0.0.0.0/0) to production databases.**
 
+**You have accomplished PHASE 1 of this Project, below are the names of the Toolkit of the Multi-Cloud & DevOsp and a functional description of the TERRAFORM AND ANSIBLE Scripts used IN THE DEPLOYMENT 
+OF THE ABOVE INFRASTRUCTURE:**
+
+**Infrastructure Provisioning:**
+
+AWS CloudShell displays an already created Terraform file named “ MAIN.TF” that would provision a VM Virtual Machine. The highlighted block will create the virtual machine.
+
+![ImageTerraform script](https://github.com/sva12000/SVera/assets/43139150/ebfe6341-d531-4971-8f88-581d086d75bd)
+
+ 
+The Terraform apply,  command when invocated it, will provision the infrastructure in a fully automated way.
+ 
+![Terraformscript2](https://github.com/sva12000/SVera/assets/43139150/c0f23a4b-c434-4361-8c75-f2b493fcd97f)
 
 
-**END OF PHASE 1**
+Terraform apply is reading the main.tf file to deploy the instances or resources indicated on this file.
+![TerraformScript3](https://github.com/sva12000/SVera/assets/43139150/e5294ad3-d2f9-4d21-92fa-62cb9e691f7c)
+ 
 
-------
+After a few seconds, the instance will be created on AWS  EC2 site 
+![TerraformScript4](https://github.com/sva12000/SVera/assets/43139150/a34c1bb2-627c-42ad-b463-e987a3d010d3)
 
 
+**Terraform configuration file to provision a VM on AWS.**
+```
+Live1-canivete > main.fg > provider “aws”
+1	terraform {
+2	  required_providers {
+3	    Aws = {
+4	         Source  =  “hashicorp/aws”
+5	         Version =  “~> 4.16”
+6	    }
+7	  }
+8	 
+9	  Required_version = “>= 1.2.0”
+10	}
+11	
+12	Provider “aws” {
+13	    region  =  “us-west-2”
+14	}
+15	
+16	resource “aws_instance” “app_server” {
+17	   ami	          = “ami-838c94e3”
+18	   Instance_type = “t2.micro”
+19	
+20	  Tags = {
+21	      Name = “tcb-app-server1”
+22	  }
+23	}
+```
+		
+**ENVIRONMENT CONFIGURATION USING**
+
+**ANSIBLE**
+
+It is a configuration management tool that allows you to automate all those environment configuration steps without having to connect to all those servers to do it manually.
+
+Before you were using a note pad now you create a PlayBook.
+
+Playbook is a configuration file with a set of tasks that you can put together for ANSIBLE can execute in parallel across multiple servers.
+
+**Example of ANSIBLE PLAYBOOK.-**
+
+This playbook file was created to install APACHE on a search of WEB SERVERS. 
+THIS PLAYBOOK will connect to each one of the WEB Servers whether one server or a thousand servers.
+It will do all the tasks at the same time in parallel.
+
+Go there open a new connectivity to those hosts and run all the tasks and then everything that starts on line four is a task.
+
+* so the first task that ends, 
+* what’s gonna do is install and configure the latest APACHE VERSION
+* And then instead of you connecting to the VM and running the uninstall for example to install a new software in a VM.
+*It would now use **ANSIBLE** task to fulfill that request.
+```
+* Changing Directory permission 
+* Copy sample index file
+* Iptables:  Allow traffic on port 80” adding  IPTABLES RULES
+```
+All of those tasks with **ANSIBLE** in just a single shot with just one command
+-You write the ANSIBLE PLAYBOOK and then you specify in which servers you want to run those set of tasks
+
+ ![ANSIBLEscreenshot1](https://github.com/sva12000/SVera/assets/43139150/218bbb67-9a16-462c-82d2-dbca0cf58a67)
+
+
+
+
+
+
+**+++++++++++++++END OF PHASE 1+++++++++++++++**
+
+
+
+________________________________________________________________________________________________________
 
 
 
