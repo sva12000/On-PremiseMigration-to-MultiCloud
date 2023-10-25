@@ -6,7 +6,7 @@
 SVera is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
 --->
-<h>**Migratring On-Premise to Multi-Cloud Platform (Google Cloud and Amazon AWS Cloud) Using DevOps (IaC) Terraform, Ansible scripts for faster Deployment**</h>
+<h>**Migratring On-Premise to Multi-Cloud Platform (Google Cloud and Amazon AWS Cloud) Using DevOps (IaC) Terraform, and Ansible scripts for faster Deployment**</h>
 <h2>Description</h2>
 		The project consists on Migrate The Luxxy-Covid-19 testing results system componentes Webserver (VM), Database (MySQL) and Data from the Corpore Data-Center (On-Premise), over the Multi-Cloud Platform environment (GCP and AWS) architecture. To cary out this assignment a Multi-Cloud architecture with resources running in AWS and Google Cloud Platform would be deployed using a combination of Infrastructure as Code (IaC) tools to run scripts and the GUI interface of the cloud platform. 
 The Multi-Cloud infrastructure and resources's provision will be carry out through (IaC) Terraform scripts running in AWS and Google Cloud Platforms.
