@@ -6,11 +6,12 @@
 SVera is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
 --->
+<h1>HANDS-ON DATA MIGRATION FROM ON-PREMISE TO MULTI-CLOUD</h1>
 <h>**Migratring On-Premise to Multi-Cloud Platform (Google Cloud and Amazon AWS Cloud) Using DevOps (IaC) Terraform, and Ansible scripts for faster Deployment**</h>
 <h2>Description</h2>
-		The project consists on Migrate The Luxxy-Covid-19 testing results system componentes Webserver (VM), Database (MySQL) and Data from the Corpore Data-Center (On-Premise), over the Multi-Cloud Platform environment (GCP and AWS) architecture. To cary out this assignment a Multi-Cloud architecture with resources running in AWS and Google Cloud Platform would be deployed using a combination of Infrastructure as Code (IaC) tools to run scripts and the GUI interface of the cloud platform. 
+		The project consists on Migrate The Luxxy-Covid-19 testing results system componentes Webserver (VM), Database (MySQL) and Data from the Corpore Data-Center (On-Premise), over the Multi-Cloud Platform environment (GCP and AWS) architecture. To cary out this assignment a Multi-Cloud architecture with resources running in AWS and Google Cloud Platform would be deployed using a combination of Infrastructure as Code (IaC) tools to run scripts and the GUI interface of the cloud platformS. 
 The Multi-Cloud infrastructure and resources's provision will be carry out through (IaC) Terraform scripts running in AWS and Google Cloud Platforms.
-		Once the infrastructures are up and running in both Cloud Platform (GCP and AWS) and the needed resources have been provisioned, the Migration of Data from On-Premise over the Multi-cloud Platforms would be executed. Below there are the screenshots with the steps on how to deploy this MultiCloud – Terraform – Ansible – Kubernetes and DevOps assignment.
+		Once the infrastructure is up and running in both Cloud Platform (GCP and AWS) and the required resources have been provisioned, the Migration of Data from On-Premise over the Multi-cloud Platforms would be executed. Below there are the screenshots with the steps on how to proceed with this MultiCloud deploymennt, using IaC tools such as – Terraform – Ansible – Kubernetes and DevOps assignments.
 
 
  	DevOps
