@@ -1,0 +1,147 @@
+<**PHASE 3**>
+
+- #NEXT MIGRATION OF BOTH DATABASES'S DATA TO SOLUTION ARCHITECTURE#
+
+  ![ImageTask3Photo](https://github.com/sva12000/SVera/assets/43139150/278dfcd1-4002-4b78-a10d-2c68f7838820)
+
+  
+
+**- Google Cloud Platform - Database Migration steps**
+
+•	Connect to Google Cloud Shell
+
+•	Download the dump using wget
+
+```
+cd ~
+
+mkdir mission3_en
+
+cd mission3_en
+
+wget https://tcb-public-events.s3.amazonaws.com/icp/mission3.zip
+
+unzip mission3.zip
+```
+
+![IMAGETASK3A](https://github.com/sva12000/SVera/assets/43139150/b40e552d-be55-4f9a-a160-f88f57e32450)
+
+
+Connect to Cloud SQL MySQL database instance by running the following command. Make sure to add the SQL INSTANCE host public IP address.
+
+```
+mysql --host=<public_ip_address> --port=3306 -u app -p
+```
+
+![ImageTASK3B](https://github.com/sva12000/SVera/assets/43139150/4b21e4b1-6ca5-461e-a910-95323a361c7f)
+
+
+Import the dump on Cloud SQL by running the following command:
+
+```
+se dbcovidtesting;
+
+source ~/mission3_en/mission3/en/db/db_dump.sql
+```
+
+
+![ImageTask3C](https://github.com/sva12000/SVera/assets/43139150/0a8fa374-ce5a-4ee3-a807-119355f9af56)
+
+
+Check if the data got imported correctly and run the following command
+
+```
+select * from records;
+```
+
+
+![ImageTask3D](https://github.com/sva12000/SVera/assets/43139150/f3005ec3-1b06-4339-87eb-c61b9285e9b7)
+
+
+Type the command below to :
+
+```
+exit;
+```
+
+![ImageTask3E](https://github.com/sva12000/SVera/assets/43139150/8054443f-b345-471b-a88d-21d46106db90)
+
+
+-  We are going to migrate both databases including the PDF data, which has the COVID-19 testing results from the On-premises application server to the S3 Bucket
+
+**-  Amazon Web Services - PDF Files Migration steps**
+   
+•	Connect to the AWS Cloud Shell
+
+•	Download the PDF files
+
+```
+mkdir mission3_en
+
+cd mission3_en
+
+wget https://tcb-public-events.s3.amazonaws.com/icp/mission3.zip
+```
+
+```
+unzip mission3.zip
+```
+
+
+**mkdir mission3_en**
+![image47](https://github.com/sva12000/SVera/assets/43139150/2198da91-4a5f-44d7-b190-9b066ca434cd)
+
+
+**cd mission3_en**
+
+![image48](https://github.com/sva12000/SVera/assets/43139150/789b1826-311c-4ae4-80ac-28be65210f88)
+
+
+**wget https://tcb-public-events.s3.amazonaws.com/icp/mission3.zip**
+
+
+![image50](https://github.com/sva12000/SVera/assets/43139150/2a2cf5bd-6ec8-4162-89fe-1810338c616a)
+
+**unzip mission3.zip**
+
+![image51](https://github.com/sva12000/SVera/assets/43139150/27966163-c530-4f5f-a241-cffec3433af5)
+
+
+Sync PDF Files with your AWS S3 used for the COVID-19 Testing Status System. Replace the bucket name with yours.
+
+Run these commands to accomplish that.
+
+```
+cd mission3/en/pdf_files
+
+aws s3 sync . s3://luxxy-covid-testing-system-pdf-en-xxxx
+```
+
+![image52](https://github.com/sva12000/SVera/assets/43139150/53454f73-9d2e-4d29-8e03-00b59b7eb3b3)
+
+**aws s3 sync . s3://luxxy-covid-testing-system-pdf-en-xxxx**
+
+![image53](https://github.com/sva12000/SVera/assets/43139150/88f5cde8-3ce4-45b8-b345-e562de2a6368)
+
+**Still Synch and uploading PDF files**
+
+![image54](https://github.com/sva12000/SVera/assets/43139150/4952f4b3-6276-4919-bbab-1fb57081e1e9)
+
+**All PDF files are synched and you can see them in the AmazonS3 > Buckets**
+
+![image55](https://github.com/sva12000/SVera/assets/43139150/1f0dfefe-ac32-4c14-9afa-96fd183f964a)
+
+• **Test the application.**
+
+- Upon migrating the data and files, you should be able to see the entries under the “View Guest Results” page.
+  
+- Click any link and should show the information on the pdf file migrated to your AWS S3 bucket.
+
+![image56](https://github.com/sva12000/SVera/assets/43139150/02c90f7f-a710-4a9d-84d0-190c93f46fda)
+
+**PDF file info is displayed**
+
+![ImageTask3H](https://github.com/sva12000/SVera/assets/43139150/ad1ae267-bd0e-4fab-a187-895a9fd3e952)
+
+
+#**CONGRATULATIONS YOU HAVE SUCCESSFULLY ACCOMPLISHED THE PROJECT!**#
