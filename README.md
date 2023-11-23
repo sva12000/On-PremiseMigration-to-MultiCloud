@@ -1,6 +1,3 @@
-- 👋 Hi, I’m @svera
-- 👀 A cyber security Professional also interested in Multi-Cloud and writing code...
-- 📫 How to reach me sergiov0303@gmail.com ...
 
 <!---
 SVera is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
